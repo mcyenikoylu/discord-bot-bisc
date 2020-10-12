@@ -1,14 +1,15 @@
 {
   "name": "bisc",
   "version": "1.0.0",
-  "description": "",
+  "description": "discord bot deneme",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "author": "",
+  "author": "mcy",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "12.3.1"
+    "discord.js": "12.3.1",
+    "heroku": "^7.45.0"
   }
 }
