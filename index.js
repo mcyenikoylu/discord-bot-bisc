@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const {google} = require('googleapis');
 const creds = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+console.log(creds);
 //discord baglantilarim.
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -57,12 +58,12 @@ client.on('message', msg => {
     });
     const docUpdate = {
       spreadsheetId: process.env.SPREADSHEETID,
-      range: 'Class Data!P2',
+      range: 'hot new sheet!!P2',
       valueInputOption: 'USER_ENTERED',
       resource: {values: newReqArray}
     }
     let res = await gsapi.spreadsheets.values.update(docUpdate);
-
+    console.log(res);
 
     }
     //
