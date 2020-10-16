@@ -4,7 +4,7 @@
   "description": "discord bot deneme",
   "main": "index.js",
   "scripts": {
-    "start": "node ./app/index.js"
+    "start": "node index.js"
   },
   "author": "mcy",
   "license": "ISC",
