@@ -1,11 +1,31 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-
-
+const {google} = require('googleapis');
+const creds = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+//discord baglantilarim.
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
+//google api baglantilarim.
+const clientGoogle = new google.auth.JWT(
+  creds.client_email,
+  null,
+  creds.private_key,
+  ['https://www.googleapis.com/auth/spreadsheets']
+);
+clientGoogle.authorize(function(err,tokens){
+  if(err){
+      console.log(err);
+      //return;
+  } else {
+      console.log('Connect');
+      gsrun(clientGoogle);
+  }
+});
+
+
+//discord mesaj islemlerim.
 client.on('message', msg => {
 
   if (msg.content === '!sorular') {
@@ -22,6 +42,30 @@ client.on('message', msg => {
 
   if (msg.content === '!soru1') {
     msg.reply('https://youtu.be/ScHUWVAMK7A');
+    //
+    async function gsrun(cl){
+      const gsapi = google.sheets({version:'v4', auth: cl});
+      const doc = {
+        spreadsheetId: process.env.SPREADSHEETID,
+        range: 'Class Data!A2:F31'
+      }
+      let req = await gsapi.spreadsheets.values.get(doc);
+      let reqArray = req.data.values;
+      let newReqArray = reqArray.map(function(r){
+        r.push(r[0]+'-'+r[1]);
+        return r;
+    });
+    const docUpdate = {
+      spreadsheetId: process.env.SPREADSHEETID,
+      range: 'Class Data!P2',
+      valueInputOption: 'USER_ENTERED',
+      resource: {values: newReqArray}
+    }
+    let res = await gsapi.spreadsheets.values.update(docUpdate);
+
+
+    }
+    //
   }
   if (msg.content === '!soru2') {
     msg.reply('https://youtu.be/SMVgfTMs-Ic');
