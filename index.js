@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const {google} = require('googleapis');
 const creds = require('google-credentials.json'); //process.env.GOOGLE_APPLICATION_CREDENTIALS;
-console.log(creds);
+//console.log(creds);
 //discord baglantilarim.
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -42,7 +42,7 @@ client.on('message', msg => {
   }
 
   if (msg.content === '!soru1') {
-    msg.reply('https://youtu.be/ScHUWVAMK7A');
+    //msg.reply('https://youtu.be/ScHUWVAMK7A');
     //
     async function gsrun(cl){
       const gsapi = google.sheets({version:'v4', auth: cl});
@@ -64,7 +64,7 @@ client.on('message', msg => {
     }
     let res = await gsapi.spreadsheets.values.update(docUpdate);
     console.log(res);
-
+    msg.reply(res);
     }
     //
   }
