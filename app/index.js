@@ -1,30 +1,13 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const {google} = require('googleapis');
-//const creds = require('./google-credentials.json'); //process.env.GOOGLE_APPLICATION_CREDENTIALS;
-//console.log(creds);
+//const creds = require('./google-credentials.json'); 
+const creds = process.env.GOOGLE_APPLICATION_CREDENTIALS;
+
 //discord baglantilarim.
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
-
-//google api baglantilarim.
-const clientGoogle = new google.auth.JWT(
-  creds.client_email,
-  null,
-  creds.private_key,
-  ['https://www.googleapis.com/auth/spreadsheets']
-);
-clientGoogle.authorize(function(err,tokens){
-  if(err){
-      console.log(err);
-      //return;
-  } else {
-      console.log('Connect');
-      gsrun(clientGoogle);
-  }
-});
-
 
 //discord mesaj islemlerim.
 client.on('message', msg => {
@@ -42,13 +25,32 @@ client.on('message', msg => {
   }
 
   if (msg.content === '!soru1') {
+    msg.reply('ayaktayim.');
     //msg.reply('https://youtu.be/ScHUWVAMK7A');
-    //
+    
+    //google spreadsheet kodlari
+    //google api baglantilarim.
+const clientGoogle = new google.auth.JWT(
+  creds.client_email,
+  null,
+  creds.private_key,
+  ['https://www.googleapis.com/auth/spreadsheets']
+);
+clientGoogle.authorize(function(err,tokens){
+  if(err){
+      console.log(err);
+      //return;
+  } else {
+      console.log('Connect');
+      gsrun(clientGoogle);
+  }
+});
+
     async function gsrun(cl){
       const gsapi = google.sheets({version:'v4', auth: cl});
       const doc = {
         spreadsheetId: process.env.SPREADSHEETID,
-        range: 'Class Data!A2:F31'
+        range: 'Class Data!A2:F2'
       }
       let req = await gsapi.spreadsheets.values.get(doc);
       let reqArray = req.data.values;
@@ -58,13 +60,13 @@ client.on('message', msg => {
     });
     const docUpdate = {
       spreadsheetId: process.env.SPREADSHEETID,
-      range: 'hot new sheet!P1',
+      range: 'hot new sheet!!A1',
       valueInputOption: 'USER_ENTERED',
       resource: {values: newReqArray}
     }
     let res = await gsapi.spreadsheets.values.update(docUpdate);
-    console.log(res);
-    msg.reply(res);
+    //console.log(res);
+
     }
     //
   }
@@ -85,5 +87,4 @@ client.on('message', msg => {
   }
 
 });
-
 client.login(process.env.BOT_TOKEN);
