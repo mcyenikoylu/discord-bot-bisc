@@ -58,7 +58,7 @@ client.on('message', msg => {
     });
     const docUpdate = {
       spreadsheetId: process.env.SPREADSHEETID,
-      range: 'hot new sheet!!P2',
+      range: 'hot new sheet!P2',
       valueInputOption: 'USER_ENTERED',
       resource: {values: newReqArray}
     }
