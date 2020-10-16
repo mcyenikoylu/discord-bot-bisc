@@ -33,7 +33,7 @@ client.on('message', msg => {
 const clientGoogle = new google.auth.JWT(
   process.env.GOOGLE_CLIENT_EMAIL,//creds.client_email,
   null,
-  process.env.GOOGLE_PRIVATE_KEY,//creds.private_key,
+  process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),//creds.private_key,
   ['https://www.googleapis.com/auth/spreadsheets']
 );
 clientGoogle.authorize(function(err,tokens){
