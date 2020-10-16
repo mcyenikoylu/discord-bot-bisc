@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const {google} = require('googleapis');
-const creds = require(process.env.GOOGLE_CREDENTIALS);
+//const creds = require(process.env.GOOGLE_CREDENTIALS);
 //const creds = process.env.GOOGLE_CREDENTIALS;
 
 //discord baglantilarim.
@@ -31,9 +31,9 @@ client.on('message', msg => {
     //google spreadsheet kodlari
     //google api baglantilarim.
 const clientGoogle = new google.auth.JWT(
-  creds.client_email,
+  process.env.GOOGLE_CLIENT_EMAIL,//creds.client_email,
   null,
-  creds.private_key.replace(/\\n/g, '\n'),
+  process.env.GOOGLE_PRIVATE_KEY,//creds.private_key,
   ['https://www.googleapis.com/auth/spreadsheets']
 );
 clientGoogle.authorize(function(err,tokens){
