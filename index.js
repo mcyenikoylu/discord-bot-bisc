@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const {google} = require('googleapis');
-const creds = require('google-credentials.json'); //process.env.GOOGLE_APPLICATION_CREDENTIALS;
+//const creds = require('./google-credentials.json'); //process.env.GOOGLE_APPLICATION_CREDENTIALS;
 //console.log(creds);
 //discord baglantilarim.
 client.on('ready', () => {
