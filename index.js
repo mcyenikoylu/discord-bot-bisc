@@ -30,11 +30,12 @@ async function gsrun(cl){
   }
   let req = await gsapi.spreadsheets.values.get(doc);
   const rows = req.data.values;
-  let n = rows.length+1;
+  let n = rows.length++;
 
   client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
   });
+
   client.on('message', message => {
     if (message.content.startsWith(`${prefix}basvurdum`)) {
       let chan = message.channel.id;
