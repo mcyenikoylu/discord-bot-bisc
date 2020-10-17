@@ -12,7 +12,9 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-  //if (message.content.startsWith(`${prefix}basvurdum`)) {
+  if (message.content.startsWith(`${prefix}basvurdum`) 
+  || message.content.startsWith(`${prefix}guncelledim`) 
+  || message.content.startsWith(`${prefix}aldim`)) {
 
     const clientGoogle = new google.auth.JWT(
       process.env.GOOGLE_CLIENT_EMAIL,//creds.client_email,
@@ -72,7 +74,7 @@ client.on('message', message => {
 
 
     
-  //}
+  }
 });
 
 
