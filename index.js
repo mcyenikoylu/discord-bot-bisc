@@ -35,7 +35,7 @@ async function gsrun(cl){
   client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
   });
-  dclient.on('message', message => {
+  client.on('message', message => {
     if (message.content.startsWith(`${prefix}ping`)) {
       let chan = message.channel.id;
       if(chan==='759726576819503137'){
