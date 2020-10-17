@@ -17,7 +17,7 @@ clientGoogle.authorize(function(err,tokens){
       console.log(err);
       //return;
   } else {
-      console.log('Connect');
+      console.log('Connect mcy');
       gsrun(clientGoogle);
   }
 });
@@ -25,7 +25,7 @@ clientGoogle.authorize(function(err,tokens){
 async function gsrun(cl){
   const gsapi = google.sheets({version:'v4', auth: cl});
   const doc = {
-      spreadsheetId: process.env.SPREADSHEETID,
+      spreadsheetId: '1RcLADPxuonv-S5kK1551sqUfT4bfyXftRHe8UgTilX4',//process.env.SPREADSHEETID,
       range: 'Sheet1!A1:H'
   }
   let req = await gsapi.spreadsheets.values.get(doc);
@@ -48,7 +48,7 @@ async function gsrun(cl){
         let uname = message.author.username;
         let uid = message.author.id;
         const docUpdate = {
-            spreadsheetId: process.env.SPREADSHEETID,
+            spreadsheetId: '1RcLADPxuonv-S5kK1551sqUfT4bfyXftRHe8UgTilX4',//process.env.SPREADSHEETID,
             range: `Sheet1!A${n}`,
             valueInputOption: 'USER_ENTERED',
             resource: {values: [
@@ -59,7 +59,7 @@ async function gsrun(cl){
     
       }
     }
-  })
+  });
 
 }
 
