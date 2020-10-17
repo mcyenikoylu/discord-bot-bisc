@@ -28,11 +28,6 @@ async function gsrun(cl){
       spreadsheetId: '1MhXCEKaqYbyHiDr8hmLoqShgp2NhNwQSXHK_eZx8uBk',//process.env.SPREADSHEETID,
       range: 'BISCBot!A1:H'
   }
-  let req = await gsapi.spreadsheets.values.get(doc);
-  const rows = req.data.values;
-  console.log(rows.length);
-  let n = rows.length+1;
-  console.log(n);
 
   client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
@@ -40,6 +35,13 @@ async function gsrun(cl){
 
   client.on('message', message => {
     if (message.content.startsWith(`${prefix}basvurdum`)) {
+
+      let req = await gsapi.spreadsheets.values.get(doc);
+      const rows = req.data.values;
+      console.log(rows.length);
+      let n = rows.length+1;
+      console.log(n);
+
       let chan = message.channel.id;
       if(chan==='763376896284426280'){
         let mesajorj = message.content;
