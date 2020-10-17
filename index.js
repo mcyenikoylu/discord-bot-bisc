@@ -25,8 +25,8 @@ clientGoogle.authorize(function(err,tokens){
 async function gsrun(cl){
   const gsapi = google.sheets({version:'v4', auth: cl});
   const doc = {
-      spreadsheetId: '1RcLADPxuonv-S5kK1551sqUfT4bfyXftRHe8UgTilX4',//process.env.SPREADSHEETID,
-      range: 'Sheet1!A1:H'
+      spreadsheetId: '1MhXCEKaqYbyHiDr8hmLoqShgp2NhNwQSXHK_eZx8uBk',//process.env.SPREADSHEETID,
+      range: 'BISCBot!A1:H'
   }
   let req = await gsapi.spreadsheets.values.get(doc);
   const rows = req.data.values;
@@ -36,9 +36,9 @@ async function gsrun(cl){
     console.log(`Logged in as ${client.user.tag}!`);
   });
   client.on('message', message => {
-    if (message.content.startsWith(`${prefix}ping`)) {
+    if (message.content.startsWith(`${prefix}basvurdum`)) {
       let chan = message.channel.id;
-      if(chan==='759726576819503137'){
+      if(chan==='763376896284426280'){
         let mesajorj = message.content;
         let mesajrep = mesajorj.replace(`${prefix}ping`,'');
         let chan = message.channel.id; 
@@ -48,8 +48,8 @@ async function gsrun(cl){
         let uname = message.author.username;
         let uid = message.author.id;
         const docUpdate = {
-            spreadsheetId: '1RcLADPxuonv-S5kK1551sqUfT4bfyXftRHe8UgTilX4',//process.env.SPREADSHEETID,
-            range: `Sheet1!A${n}`,
+            spreadsheetId: '1MhXCEKaqYbyHiDr8hmLoqShgp2NhNwQSXHK_eZx8uBk',//process.env.SPREADSHEETID,
+            range: `BISCBot!A${n}`,
             valueInputOption: 'USER_ENTERED',
             resource: {values: [
                 [ timestamp, uid, uname, disc, mesajorj ]
