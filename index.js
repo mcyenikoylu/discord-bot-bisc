@@ -30,7 +30,9 @@ async function gsrun(cl){
   }
   let req = await gsapi.spreadsheets.values.get(doc);
   const rows = req.data.values;
-  let n = rows.length++;
+  console.log(rows.length);
+  let n = rows.length+1;
+  console.log(n);
 
   client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
