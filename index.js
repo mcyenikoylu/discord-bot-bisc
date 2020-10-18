@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const {google} = require('googleapis');
 const { prefix, token } = require('./config.json');
-//const creds = require(process.env.GOOGLE_CREDENTIALS);
-//const creds = process.env.GOOGLE_CREDENTIALS;
 
 let n;
 
@@ -12,14 +10,18 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-  if (message.content.startsWith(`${prefix}basvurdum`) 
-  || message.content.startsWith(`${prefix}guncelledim`) 
-  || message.content.startsWith(`${prefix}aldim`)) {
+  
+  //turkce karakter convert.
+  let mesajtr = Cevir(message.content);
+
+  if (mesajtr.startsWith(`${prefix}basvurdum`) 
+  || mesajtr.startsWith(`${prefix}guncelledim`) 
+  || mesajtr.startsWith(`${prefix}aldim`)) {
 
     const clientGoogle = new google.auth.JWT(
-      process.env.GOOGLE_CLIENT_EMAIL,//creds.client_email,
+      process.env.GOOGLE_CLIENT_EMAIL,
       null,
-      process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),//creds.private_key,
+      process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
       ['https://www.googleapis.com/auth/spreadsheets']
     );
     
@@ -28,7 +30,7 @@ client.on('message', message => {
           console.log(err);
           //return;
       } else {
-          console.log('Connect mcy');
+        console.log('Connect mcy bot');
           gsrun(clientGoogle);
       }
     });
@@ -36,7 +38,7 @@ client.on('message', message => {
     async function gsrun(cl){
       const gsapi = google.sheets({version:'v4', auth: cl});
       const doc = {
-          spreadsheetId: '1MhXCEKaqYbyHiDr8hmLoqShgp2NhNwQSXHK_eZx8uBk',//process.env.SPREADSHEETID,
+          spreadsheetId: process.env.SPREADSHEETIDBISC,
           range: 'BISCBot!A1:H'
       }
       let req = await gsapi.spreadsheets.values.get(doc);
@@ -45,16 +47,13 @@ client.on('message', message => {
     
       let chan = message.channel.id;
       if(chan==='763376896284426280'){
-        let mesajorj = message.content;
-        //let mesajrep = mesajorj.replace(`${prefix}ping`,'');
-        //let chan = message.channel.id; 
+        let mesajorj = mesajtr;
         let disc = message.author.discriminator;
-        //let time = message.createdAt.toString();
         let timestamp = message.createdTimestamp.toString();
         let uname = message.author.username;
         let uid = message.author.id;
         const docUpdate = {
-            spreadsheetId: '1MhXCEKaqYbyHiDr8hmLoqShgp2NhNwQSXHK_eZx8uBk',//process.env.SPREADSHEETID,
+            spreadsheetId: process.env.SPREADSHEETIDBISC,
             range: `BISCBot!A${n}`,
             valueInputOption: 'USER_ENTERED',
             resource: {values: [
@@ -62,23 +61,24 @@ client.on('message', message => {
               ]}
         }
         gsapi.spreadsheets.values.update(docUpdate);
-    
+        console.log('Kayit yapan kullanici:' + uname.toString());
       }
-
-    
-    
-    
     }
-
-
-
-
-    
   }
 });
-
-
-
-
-
+function Cevir(text)
+ {
+    var trMap = {
+        'çÇ':'c',
+        'ğĞ':'g',
+        'şŞ':'s',
+        'üÜ':'u',
+        'ıİ':'i',
+        'öÖ':'o'
+    };
+    for(var key in trMap) {
+        text = text.replace(new RegExp('['+key+']','g'), trMap[key]);
+    }
+    return text;
+}
 client.login(process.env.BOT_TOKEN);
