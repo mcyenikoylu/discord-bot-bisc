@@ -14,9 +14,7 @@ client.on('message', message => {
   //turkce karakter convert.
   let mesajtr = Cevir(message.content);
 
-  if (mesajtr.startsWith(`${prefix}basvurdum`) 
-  || mesajtr.startsWith(`${prefix}guncelledim`) 
-  || mesajtr.startsWith(`${prefix}aldim`)) {
+  if (mesajtr.startsWith(`${prefix}`)) {
 
     const clientGoogle = new google.auth.JWT(
       process.env.GOOGLE_CLIENT_EMAIL,
