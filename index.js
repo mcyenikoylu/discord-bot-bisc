@@ -50,16 +50,23 @@ client.on('message', message => {
         let timestamp = message.createdTimestamp.toString();
         let uname = message.author.username;
         let uid = message.author.id;
+        //! split
+        const words = mesajorj.split(`${prefix}`);
+        const array1 = [];
+        words.forEach(e => {
+            if(e != ''){
+                array1.push([timestamp, uid, uname, disc, `${prefix}`+e.replace('\n','')])
+            }
+        });
         const docUpdate = {
             spreadsheetId: process.env.SPREADSHEETIDBISC,
             range: `BISCBot!A${n}`,
             valueInputOption: 'USER_ENTERED',
-            resource: {values: [
-                [ timestamp, uid, uname, disc, mesajorj ]
-              ]}
+            resource: {values: array1}
         }
+
         gsapi.spreadsheets.values.update(docUpdate);
-        console.log('Kayit yapan kullanici:' + uname.toString());
+        console.log('Kayit yapan kullanici:' + uname.toString() + ' mesaj:' + mesajorj);
       }
     }
   }
