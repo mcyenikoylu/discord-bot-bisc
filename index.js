@@ -95,7 +95,7 @@ client.on('message', message => {
         let msgid = message.id;
         
         const docUpdateMsg = {
-            spreadsheetId: '1RcLADPxuonv-S5kK1551sqUfT4bfyXftRHe8UgTilX4',
+            spreadsheetId: process.env.SPREADSHEETIDBISC,
             range: `BISCBotAll!A${n2}`,
             valueInputOption: 'USER_ENTERED',
             resource: {values: [
