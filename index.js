@@ -14,27 +14,31 @@ client.on('message', message => {
   //turkce karakter convert.
   let mesajtr = Cevir(message.content);
 
-  if (mesajtr.startsWith(`${prefix}`)) {
+  const clientGoogle = new google.auth.JWT(
+    process.env.GOOGLE_CLIENT_EMAIL,
+    null,
+    process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
+    ['https://www.googleapis.com/auth/spreadsheets']
+  );
+  
+  clientGoogle.authorize(function(err,tokens){
+    if(err){
+        console.log(err);
+        //return;
+    } else {
+      console.log('Connect mcy bot');
+        gsrun(clientGoogle);
+    }
+  });
 
-    const clientGoogle = new google.auth.JWT(
-      process.env.GOOGLE_CLIENT_EMAIL,
-      null,
-      process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n'),
-      ['https://www.googleapis.com/auth/spreadsheets']
-    );
+
+
     
-    clientGoogle.authorize(function(err,tokens){
-      if(err){
-          console.log(err);
-          //return;
-      } else {
-        console.log('Connect mcy bot');
-          gsrun(clientGoogle);
-      }
-    });
 
     async function gsrun(cl){
+
       const gsapi = google.sheets({version:'v4', auth: cl});
+
       const doc = {
           spreadsheetId: process.env.SPREADSHEETIDBISC,
           range: 'BISCBot!A1:H'
@@ -42,9 +46,18 @@ client.on('message', message => {
       let req = await gsapi.spreadsheets.values.get(doc);
       let rows = req.data.values;
       let n = rows.length+1;
+
+      const doc2 = {
+        spreadsheetId: process.env.SPREADSHEETIDBISC,
+        range: 'BISCBotAll!A1:J'
+      }
+      let req2 = await gsapi.spreadsheets.values.get(doc2);
+      let rows2 = req2.data.values;
+      let n2 = rows2.length+1;
     
-      let chan = message.channel.id;
-      if(chan==='763376896284426280'){
+      if (mesajtr.startsWith(`${prefix}`)) {
+        let chan = message.channel.id;
+        if(chan==='763376896284426280'){
         let mesajorj = mesajtr;
         let disc = message.author.discriminator;
         let timestamp = message.createdTimestamp.toString();
@@ -67,9 +80,34 @@ client.on('message', message => {
 
         gsapi.spreadsheets.values.update(docUpdate);
         console.log('Kayit yapan kullanici:' + uname.toString() + ' mesaj:' + mesajorj);
+        }
       }
+      else {
+        //console.log(message.content);
+        let timestampp = message.createdTimestamp.toString();
+        let uidd = message.author.id;
+        let unamee = message.author.username;
+        let discc = message.author.discriminator;
+        let authorname = message.author.tag;
+        let aname = message.member.displayName;
+        let chanid = message.channel.id;
+        let channame = message.channel.name;
+        let msgid = message.id;
+        
+        const docUpdateMsg = {
+            spreadsheetId: '1RcLADPxuonv-S5kK1551sqUfT4bfyXftRHe8UgTilX4',
+            range: `BISCBotAll!A${n2}`,
+            valueInputOption: 'USER_ENTERED',
+            resource: {values: [
+                [ timestampp, uidd, unamee, discc, authorname, aname, chanid, channame, msgid, message.content]
+              ]}
+            //resource: {values: array1}
+        }
+        gsapi.spreadsheets.values.update(docUpdateMsg);
+      }
+
     }
-  }
+  
 });
 function Cevir(text)
  {
