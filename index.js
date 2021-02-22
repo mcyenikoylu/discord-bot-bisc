@@ -112,41 +112,41 @@ client.on('message', message => {
         //   "messageid": message.id});
         // xhr.send(data);
 
-        // var xmlhttp = new XMLHttpRequest();
-        // var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
-        // var data = {"email": useremail,
-        // "discord-id": message.author.id, 
-        // "message-id": message.id};
-        // xmlhttp.open("POST", url, true);
-        // xmlhttp.setRequestHeader("Content-type", "application/json;");
-        // xmlhttp.send(JSON.stringify(data));
+        var xmlhttp = new XMLHttpRequest();
+        var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
+        var data = {"email": useremail,
+        "discord-id": message.author.id, 
+        "message-id": message.id};
+        xmlhttp.open("POST", url, true);
+        xmlhttp.setRequestHeader("Content-type", "application/json;");
+        xmlhttp.send(JSON.stringify(data));
         
       }}
       }
       
-      else {
-        //console.log(message.content);
-        let timestampp = message.createdTimestamp.toString();
-        let uidd = message.author.id;
-        let unamee = message.author.username;
-        let discc = message.author.discriminator;
-        let authorname = message.author.tag;
-        let aname = message.member.displayName;
-        let chanid = message.channel.id;
-        let channame = message.channel.name;
-        let msgid = message.id;
+      // else {
+      //   //console.log(message.content);
+      //   let timestampp = message.createdTimestamp.toString();
+      //   let uidd = message.author.id;
+      //   let unamee = message.author.username;
+      //   let discc = message.author.discriminator;
+      //   let authorname = message.author.tag;
+      //   let aname = message.member.displayName;
+      //   let chanid = message.channel.id;
+      //   let channame = message.channel.name;
+      //   let msgid = message.id;
         
-        const docUpdateMsg = {
-            spreadsheetId: process.env.SPREADSHEETIDBISC,
-            range: `BISCBotAll!A${n2}`,
-            valueInputOption: 'USER_ENTERED',
-            resource: {values: [
-                [ timestampp, uidd, unamee, discc, authorname, aname, chanid, channame, msgid, message.content]
-              ]}
-            //resource: {values: array1}
-        }
-        gsapi.spreadsheets.values.update(docUpdateMsg);
-      }
+      //   const docUpdateMsg = {
+      //       spreadsheetId: process.env.SPREADSHEETIDBISC,
+      //       range: `BISCBotAll!A${n2}`,
+      //       valueInputOption: 'USER_ENTERED',
+      //       resource: {values: [
+      //           [ timestampp, uidd, unamee, discc, authorname, aname, chanid, channame, msgid, message.content]
+      //         ]}
+      //       //resource: {values: array1}
+      //   }
+      //   gsapi.spreadsheets.values.update(docUpdateMsg);
+      // }
 
     }
   
