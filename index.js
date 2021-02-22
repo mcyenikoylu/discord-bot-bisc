@@ -87,7 +87,7 @@ client.on('message', message => {
         //813432940448710686
         if (mesajtr.startsWith(`${prefix}email`)){
             var useremail = mesajtr.split(`${prefix}email`);
-            var useremailrep = useremail.replace(',',' ');
+            var useremailrep = useremail.toString().replace(',',' ');
 
             console.log('email:' + useremailrep.trim() + ' discord-id:' + message.author.id + ' message-id:' + message.id);
 
