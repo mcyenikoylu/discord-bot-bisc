@@ -87,9 +87,9 @@ client.on('message', message => {
         //813432940448710686
         if (mesajtr.startsWith(`${prefix}email`)){
             var useremail = mesajtr.split(`${prefix}email`);
-            useremail = useremail.replace(',','').trim();
+            var useremailrep = useremail.replace(',','');
 
-            console.log('email:' + useremail + ' discord-id:' + message.author.id + ' message-id:' + message.id);
+            console.log('email:' + useremailrep + ' discord-id:' + message.author.id + ' message-id:' + message.id);
 
         // POST: https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt
         // Content-Type: application/json
