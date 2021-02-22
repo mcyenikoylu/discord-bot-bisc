@@ -86,7 +86,7 @@ client.on('message', message => {
         //https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt?email=mcyenikoylu@gmail.com&discord-id=123&message-id=selam
         //813432940448710686
         if (mesajtr.startsWith(`${prefix}email`)){
-            let useremail = mesajtr.split(`${prefix}`);
+            let useremail = mesajtr.split(`${prefix}email`);
 
         // POST: https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt
         // Content-Type: application/json
