@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const {google} = require('googleapis');
 const { prefix, token } = require('./config.json');
+const https = require('https')
 
 let n;
 
@@ -81,7 +82,37 @@ client.on('message', message => {
         gsapi.spreadsheets.values.update(docUpdate);
         console.log('Kayit yapan kullanici:' + uname.toString() + ' mesaj:' + mesajorj);
         }
+        else if (chan==='813432940448710686'){
+        //https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt?email=mcyenikoylu@gmail.com&discord-id=123&message-id=selam
+        //813432940448710686
+        if (mesajtr.startsWith(`${prefix}email`)){
+            let useremail = mesajtr.split(`${prefix}`);
+
+        // POST: https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt
+        // Content-Type: application/json
+        // [{"email": useremail,
+        //   "discord-id": message.author.id, 
+        //   "message-id": message.id}]
+        // }
+
+        var xhr = new XMLHttpRequest();
+        var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        // xhr.onreadystatechange = function () {
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         var json = JSON.parse(xhr.responseText);
+        //         console.log(json.email + ", " + json.password);
+        //     }
+        // };
+        var data = JSON.stringify({"email": useremail,
+          "discord-id": message.author.id, 
+          "message-id": message.id});
+        xhr.send(data);
+        
       }
+      }
+      
       else {
         //console.log(message.content);
         let timestampp = message.createdTimestamp.toString();
