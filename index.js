@@ -112,14 +112,14 @@ client.on('message', message => {
         //   "messageid": message.id});
         // xhr.send(data);
 
-        var xmlhttp = new XMLHttpRequest();
-        var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
-        var data = {"email": useremail,
-        "discord-id": message.author.id, 
-        "message-id": message.id};
-        xmlhttp.open("POST", url, true);
-        xmlhttp.setRequestHeader("Content-type", "application/json;");
-        xmlhttp.send(JSON.stringify(data));
+        // var xmlhttp = new XMLHttpRequest();
+        // var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
+        // var data = {"email": useremail,
+        // "discord-id": message.author.id, 
+        // "message-id": message.id};
+        // xmlhttp.open("POST", url, true);
+        // xmlhttp.setRequestHeader("Content-type", "application/json;");
+        // xmlhttp.send(JSON.stringify(data));
         
       }
       }
