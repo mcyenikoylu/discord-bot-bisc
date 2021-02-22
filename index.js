@@ -95,20 +95,29 @@ client.on('message', message => {
         //   "message-id": message.id}]
         // }
 
-        var xhr = new XMLHttpRequest();
-        var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt?email=mail&discord-id=discordid&message-id=messageid";
-        xhr.open("POST", url, true);
-        xhr.setRequestHeader("Content-Type", "application/json");
-        // xhr.onreadystatechange = function () {
-        //     if (xhr.readyState === 4 && xhr.status === 200) {
-        //         var json = JSON.parse(xhr.responseText);
-        //         console.log(json.email + ", " + json.password);
-        //     }
-        // };
-        var data = JSON.stringify({"mail": useremail,
-          "discordid": message.author.id, 
-          "messageid": message.id});
-        xhr.send(data);
+        // var xhr = new XMLHttpRequest();
+        // var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt?email=mail&discord-id=discordid&message-id=messageid";
+        // xhr.open("POST", url, true);
+        // xhr.setRequestHeader("Content-Type", "application/json");
+        // // xhr.onreadystatechange = function () {
+        // //     if (xhr.readyState === 4 && xhr.status === 200) {
+        // //         var json = JSON.parse(xhr.responseText);
+        // //         console.log(json.email + ", " + json.password);
+        // //     }
+        // // };
+        // var data = JSON.stringify({"mail": useremail,
+        //   "discordid": message.author.id, 
+        //   "messageid": message.id});
+        // xhr.send(data);
+
+        var xmlhttp = new XMLHttpRequest();
+var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
+var data = {"mail": useremail,
+"discordid": message.author.id, 
+"messageid": message.id};
+xmlhttp.open("POST", url, true);
+xmlhttp.setRequestHeader("Content-type", "application/json;");
+xmlhttp.send(JSON.stringify(data));
         
       }
       }
