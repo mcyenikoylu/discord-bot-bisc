@@ -112,7 +112,7 @@ client.on('message', message => {
         //   "discordid": message.author.id, 
         //   "messageid": message.id});
         // xhr.send(data);
-
+        var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         var xmlhttp = new XMLHttpRequest();
         var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
         var data = {"email": useremail,
