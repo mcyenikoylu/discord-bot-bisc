@@ -96,7 +96,7 @@ client.on('message', message => {
         // }
 
         var xhr = new XMLHttpRequest();
-        var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
+        var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt?email=mail&discord-id=discordid&message-id=messageid";
         xhr.open("POST", url, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         // xhr.onreadystatechange = function () {
@@ -105,9 +105,9 @@ client.on('message', message => {
         //         console.log(json.email + ", " + json.password);
         //     }
         // };
-        var data = JSON.stringify({"email": useremail,
-          "discord-id": message.author.id, 
-          "message-id": message.id});
+        var data = JSON.stringify({"mail": useremail,
+          "discordid": message.author.id, 
+          "messageid": message.id});
         xhr.send(data);
         
       }
