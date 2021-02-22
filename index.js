@@ -121,7 +121,7 @@ client.on('message', message => {
         // xmlhttp.setRequestHeader("Content-type", "application/json;");
         // xmlhttp.send(JSON.stringify(data));
         
-      }
+      }}
       }
       
       else {
@@ -151,6 +151,7 @@ client.on('message', message => {
     }
   
 });
+
 function Cevir(text)
  {
     var trMap = {
