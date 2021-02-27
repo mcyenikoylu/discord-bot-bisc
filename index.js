@@ -91,33 +91,13 @@ client.on('message', message => {
 
             console.log('email:' + useremailrep.trim() + ' discord-id:' + message.author.id + ' message-id:' + message.id);
 
-        // POST: https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt
-        // Content-Type: application/json
-        // [{"email": useremail,
-        //   "discord-id": message.author.id, 
-        //   "message-id": message.id}]
-        // }
-
-        // var xhr = new XMLHttpRequest();
-        // var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt?email=mail&discord-id=discordid&message-id=messageid";
-        // xhr.open("POST", url, true);
-        // xhr.setRequestHeader("Content-Type", "application/json");
-        // // xhr.onreadystatechange = function () {
-        // //     if (xhr.readyState === 4 && xhr.status === 200) {
-        // //         var json = JSON.parse(xhr.responseText);
-        // //         console.log(json.email + ", " + json.password);
-        // //     }
-        // // };
-        // var data = JSON.stringify({"mail": useremail,
-        //   "discordid": message.author.id, 
-        //   "messageid": message.id});
-        // xhr.send(data);
         var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         var xmlhttp = new XMLHttpRequest();
         var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
         var data = {"email": useremail,
         "discord-id": message.author.id, 
-        "message-id": message.id};
+        "message-id": message.id,
+      "channel-id": '813432940448710686'};
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-type", "application/json;");
         xmlhttp.send(JSON.stringify(data));
