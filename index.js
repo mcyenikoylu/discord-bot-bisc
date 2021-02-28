@@ -105,7 +105,9 @@ client.on('message', message => {
         "discord-id": message.author.id, 
         "message-id": message.id,
       "channel-id": '813432940448710686'};
-      var request = require('xmlhttprequest');
+
+      var request = new XMLHttpRequest();
+
 var options = {
   'method': 'POST',
   'url': 'https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt',
