@@ -106,6 +106,7 @@ client.on('message', message => {
         "message-id": message.id,
       "channel-id": '813432940448710686'};
 
+      var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
       var request = new XMLHttpRequest();
 
 var options = {
