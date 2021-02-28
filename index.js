@@ -2,7 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const {google} = require('googleapis');
 const { prefix, token } = require('./config.json');
-const https = require('https')
 
 let n;
 
@@ -89,7 +88,7 @@ client.on('message', message => {
             var useremail = mesajtr.split(`${prefix}email`);
             var useremailrep = useremail.toString().replace(',',' ');
 
-            console.log('email:' + useremailrep.trim() + ' discord-id:' + message.author.id + ' message-id:' + message.id + "channel-id:813432940448710686");
+            console.log('email:' + useremailrep.trim() + ' discord-id:' + message.author.id + ' message-id:' + message.id + " channel-id:813432940448710686");
 
         var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         var xmlhttp = new XMLHttpRequest();
@@ -100,8 +99,11 @@ client.on('message', message => {
       "channel-id": '813432940448710686'};
         xmlhttp.open("POST", url);
         xmlhttp.setRequestHeader("Content-Type", "application/json;");
-        xmlhttp.send(JSON.stringify(data));
-        
+        //xmlhttp.send(JSON.stringify(data));
+        xmlhttp.send(JSON.stringify({"email":useremailrep.trim(),
+      "discord-id":message.author.id,
+    "message-id":message.id,
+  "channel-id":"813432940448710686"}));
       }}
       }
       
