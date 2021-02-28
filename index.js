@@ -91,7 +91,7 @@ client.on('message', message => {
 
             console.log('email:' + useremailrep.trim() + ' discord-id:' + message.author.id + ' message-id:' + message.id + "channel-id:813432940448710686");
 
-        var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+        var XMLHttpRequest = require(https); //require("xmlhttprequest").XMLHttpRequest;
         var xmlhttp = new XMLHttpRequest();
         var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
         var data = {"email": useremailrep.trim(),
@@ -99,7 +99,7 @@ client.on('message', message => {
         "message-id": message.id,
       "channel-id": '813432940448710686'};
         xmlhttp.open("POST", url, true);
-        xmlhttp.setRequestHeader("Content-type", "application/json;");
+        xmlhttp.setRequestHeader("Content-Type", "application/json;");
         xmlhttp.send(JSON.stringify(data));
         
       }}
