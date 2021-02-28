@@ -101,11 +101,6 @@ client.on('message', message => {
         xmlhttp.open("POST", url);
         xmlhttp.setRequestHeader("Content-Type", "application/json;");
         xmlhttp.send(JSON.stringify(data));
-
-        xmlhttp(options, function (error, response) {
-          if (error) throw new Error(error);
-          console.log(response.body);
-        });
         
       }}
       }
