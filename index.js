@@ -106,7 +106,7 @@ client.on('message', message => {
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-Type", "application/json;");
 
-var parms = "{email:" + useremailrep.trim() + " discord-id:" + message.author.id + " message-id:" + message.id + " channel-id:813432940448710686"
+var parms = "{'email':'" + useremailrep.trim() + "', 'discord-id':'" + message.author.id + "', 'message-id':'" + message.id + "', 'channel-id':'813432940448710686'"
 
         xmlhttp.send(JSON.stringify(parms));
   //       xmlhttp.send(JSON.stringify({"email":useremailrep.trim(),
