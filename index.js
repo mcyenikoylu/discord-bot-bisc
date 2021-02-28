@@ -98,7 +98,7 @@ client.on('message', message => {
         "discord-id": message.author.id, 
         "message-id": message.id,
       "channel-id": '813432940448710686'};
-        xmlhttp.open("POST", url, true);
+        xmlhttp.open("POST", url);
         xmlhttp.setRequestHeader("Content-Type", "application/json;");
         xmlhttp.send(JSON.stringify(data));
 
