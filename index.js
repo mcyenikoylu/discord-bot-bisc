@@ -103,14 +103,15 @@ client.on('message', message => {
         "message-id": message.id.toString(),
       "channel-id": "813432940448710686"};
 
-      //const jsondata = JSON.parse(data);
+     
 
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-Type", "application/json;");
 
-//var parms = "{'email':'" + useremailrep.trim() + "', 'discord-id':'" + message.author.id + "', 'message-id':'" + message.id + "', 'channel-id':'813432940448710686'"
+ var parms = "{'email':'" + useremailrep.trim().toString() + "', 'discord-id':'" + message.author.id.toString() + "', 'message-id':'" + message.id.toString() + "', 'channel-id':'813432940448710686'"
+ const jsondata = JSON.parse(parms);
 
-        xmlhttp.send(JSON.stringify(data));
+        xmlhttp.send(JSON.stringify(jsondata));
 
   //       xmlhttp.send(JSON.stringify({"email":useremailrep.trim(),
   //     "discord-id":message.author.id,
