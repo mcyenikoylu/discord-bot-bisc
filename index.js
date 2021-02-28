@@ -103,7 +103,7 @@ client.on('message', message => {
         "message-id": message.id.toString(),
       "channel-id": "813432940448710686"};
 
-      const jsondata = JSON.parse(data);
+      //const jsondata = JSON.parse(data);
 
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-Type", "application/json;");
