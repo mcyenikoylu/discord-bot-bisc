@@ -109,7 +109,7 @@ let messageid = message.id.toString();
 
      
 
-        xmlhttp.open("POST", url, true);
+        xmlhttp.open("POST", url);
         xmlhttp.setRequestHeader("Content-Type", "application/json;");
 
 
