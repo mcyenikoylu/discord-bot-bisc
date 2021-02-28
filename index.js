@@ -102,15 +102,15 @@ client.on('message', message => {
 let authorid = message.author.id.toString();
 let messageid = message.id.toString();
 
-        var data = {"email": mail,
-        "discord-id": authorid, 
-        "message-id": messageid,
-      "channel-id": '813432940448710686'};
+        var data = {'email': mail,
+        'discord-id': authorid, 
+        'message-id': messageid,
+      'channel-id': '813432940448710686'};
 
      
 
         xmlhttp.open("POST", url);
-        xmlhttp.setRequestHeader("Content-Type", "application/json;");
+        xmlhttp.setRequestHeader("Content-Type", "application/json; charset=utf-8");
 
 
 
