@@ -89,12 +89,12 @@ client.on('message', message => {
             var useremail = mesajtr.split(`${prefix}email`);
             var useremailrep = useremail.toString().replace(',',' ');
 
-            console.log('email:' + useremailrep.trim() + ' discord-id:' + message.author.id + ' message-id:' + message.id);
+            console.log('email:' + useremailrep.trim() + ' discord-id:' + message.author.id + ' message-id:' + message.id + "channel-id:813432940448710686");
 
         var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         var xmlhttp = new XMLHttpRequest();
         var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
-        var data = {"email": useremail,
+        var data = {"email": useremailrep.trim(),
         "discord-id": message.author.id, 
         "message-id": message.id,
       "channel-id": '813432940448710686'};
