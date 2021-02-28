@@ -93,10 +93,11 @@ client.on('message', message => {
         var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
         var xmlhttp = new XMLHttpRequest();
 
-        //var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
+        var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
 
+        //debug icin
         //https://hook.integromat.com/uiof1nuh5qznih6koltu0fq98yf8q5pl
-        var url = "https://hook.integromat.com/uiof1nuh5qznih6koltu0fq98yf8q5pl";
+        //var url = "https://hook.integromat.com/uiof1nuh5qznih6koltu0fq98yf8q5pl";
 
           let mail = useremailrep.trim().toString();
 let authorid = message.author.id.toString();
