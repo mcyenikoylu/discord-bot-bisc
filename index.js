@@ -90,56 +90,30 @@ client.on('message', message => {
 
             console.log('email:' + useremailrep.trim() + ' discord-id:' + message.author.id + ' message-id:' + message.id + " channel-id:813432940448710686");
 
-  //       var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
-  //       var xmlhttp = new XMLHttpRequest();
+        var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+        var xmlhttp = new XMLHttpRequest();
 
-  //       var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
-  //       var data = {"email": useremailrep.trim(),
-  //       "discord-id": message.author.id, 
-  //       "message-id": message.id,
-  //     "channel-id": '813432940448710686'};
+        //var url = "https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt";
 
-  //       xmlhttp.open("POST", url);
-  //       xmlhttp.setRequestHeader("Content-Type", "application/json;");
+        //https://hook.integromat.com/uiof1nuh5qznih6koltu0fq98yf8q5pl
+        var url = "https://hook.integromat.com/uiof1nuh5qznih6koltu0fq98yf8q5pl";
 
-  //       //xmlhttp.send(JSON.stringify(data));
-  //       xmlhttp.send(JSON.stringify({"email":useremailrep.trim(),
-  //     "discord-id":message.author.id,
-  //   "message-id":message.id,
-  // "channel-id":"813432940448710686"}));
-
-
-  const https = require('https')
-  const data = JSON.stringify({
-    "email": useremailrep.trim(),
+        var data = {"email": useremailrep.trim(),
         "discord-id": message.author.id, 
         "message-id": message.id,
-      "channel-id": '813432940448710686'
-  })
-  
-  const options = {
-    url: 'https://hook.integromat.com/bapwvuj06uneygn2yk78hndw4lqaicnt',
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }
-  
-  const req = https.request(options, res => {
-    console.log(`statusCode: ${res.statusCode}`)
-  
-    res.on('data', d => {
-      process.stdout.write(d)
-    })
-  })
-  
-  req.on('error', error => {
-    console.error(error)
-  })
-  
-  req.write(data)
-  req.end()
+      "channel-id": '813432940448710686'};
 
+        xmlhttp.open("POST", url, true);
+        xmlhttp.setRequestHeader("Content-Type", "application/json;");
+
+        //xmlhttp.send(JSON.stringify(data));
+        xmlhttp.send(JSON.stringify({"email":useremailrep.trim(),
+      "discord-id":message.author.id,
+    "message-id":message.id,
+  "channel-id":"813432940448710686"}));
+
+
+  
 
       }}
       }
