@@ -105,7 +105,7 @@ let messageid = message.id.toString();
         var data = {"email": mail,
         "discord-id": authorid, 
         "message-id": messageid,
-      "channel-id": "813432940448710686"};
+      "channel-id": '813432940448710686'};
 
      
 
