@@ -98,17 +98,17 @@ client.on('message', message => {
         //https://hook.integromat.com/uiof1nuh5qznih6koltu0fq98yf8q5pl
         var url = "https://hook.integromat.com/uiof1nuh5qznih6koltu0fq98yf8q5pl";
 
-      //   var data = {"email": useremailrep.trim(),
-      //   "discord-id": message.author.id, 
-      //   "message-id": message.id,
-      // "channel-id": '813432940448710686'};
+        var data = {"email": useremailrep.trim(),
+        "discord-id": message.author.id, 
+        "message-id": message.id,
+      "channel-id": '813432940448710686'};
 
         xmlhttp.open("POST", url, true);
         xmlhttp.setRequestHeader("Content-Type", "application/json;");
 
-var parms = "{'email':'" + useremailrep.trim() + "', 'discord-id':'" + message.author.id + "', 'message-id':'" + message.id + "', 'channel-id':'813432940448710686'"
+//var parms = "{'email':'" + useremailrep.trim() + "', 'discord-id':'" + message.author.id + "', 'message-id':'" + message.id + "', 'channel-id':'813432940448710686'"
 
-        xmlhttp.send(JSON.stringify(parms));
+        xmlhttp.send(JSON.stringify(data));
   //       xmlhttp.send(JSON.stringify({"email":useremailrep.trim(),
   //     "discord-id":message.author.id,
   //   "message-id":message.id,
