@@ -102,6 +102,7 @@ client.on('message', message => {
         "discord-id": message.author.id.toString(), 
         "message-id": message.id.toString(),
       "channel-id": "813432940448710686"};
+
       const jsondata = JSON.parse(data);
 
         xmlhttp.open("POST", url, true);
@@ -109,7 +110,7 @@ client.on('message', message => {
 
 //var parms = "{'email':'" + useremailrep.trim() + "', 'discord-id':'" + message.author.id + "', 'message-id':'" + message.id + "', 'channel-id':'813432940448710686'"
 
-        xmlhttp.send(JSON.stringify(jsondata));
+        xmlhttp.send(JSON.stringify(data));
 
   //       xmlhttp.send(JSON.stringify({"email":useremailrep.trim(),
   //     "discord-id":message.author.id,
